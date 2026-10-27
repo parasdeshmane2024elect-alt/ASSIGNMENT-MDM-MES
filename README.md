@@ -1,189 +1,128 @@
-# ASSIGNMENT-MDM-MES
-Arduino Uno &amp; ESP32 practical experiments including LED, pushbutton, I2C LCD, PWM, and frequency measurement.
-# Arduino and ESP32 Practicals
+# Arduino and ESP32 Embedded Systems Practicals
 
-This repository contains Arduino Uno and ESP32 practical programs developed as part of embedded systems and microcontroller laboratory experiments.
+## 📌 Overview
 
-The programs demonstrate basic GPIO control, timing, input interfacing, LCD communication, PWM generation, and frequency measurement.
+This repository contains a collection of embedded systems experiments and practical implementations using **Arduino and ESP32 development platforms**. It covers fundamental to intermediate concepts in microcontroller programming, digital and analog interfacing, timers, interrupts, communication protocols, PWM generation, and sensor data acquisition.
 
-## 🛠️ Hardware Used
+The experiments are designed to develop practical knowledge of embedded C/C++ programming, hardware interfacing, real-time operations, and peripheral communication.
 
-- Arduino Uno
-- ESP32 Development Board
-- LED
-- Pushbutton Switch
-- 16×2 LCD with I²C Backpack
-- Buzzer
-- DC Motor
-- L293D Motor Driver
-- Function Generator
-- Resistors
-- Jumper Wires
-- Breadboard
+## 🎯 Objectives
 
-## 💻 Software Used
+- Configure the development environment for Arduino and ESP32 platforms.
+- Understand digital input/output operations and LED control.
+- Implement software delays and non-blocking timing techniques.
+- Interface pushbuttons and implement switch debouncing.
+- Display information using LCD and graphical OLED modules.
+- Explore hardware timers, interrupts, and periodic tasks.
+- Generate PWM signals for actuator control.
+- Measure the period and frequency of external signals.
+- Implement UART and SPI communication.
+- Read analog sensor data using ADC and apply digital filtering.
 
-- Arduino IDE 2.x
-- Arduino C/C++ Programming
-- ESP32 Board Package
+## 🧪 Experiments
 
-## 📚 Practical Experiments
+| No. | Experiment Title | Key Concepts |
+|---|---|---|
+| 1 | Development Environment Setup | Arduino IDE, board configuration, libraries, program uploading |
+| 2 | LED Control Using Timing Methods | Digital output, software delay, non-blocking timing |
+| 3 | Pushbutton-Controlled LED with Debouncing | Digital input, switch bouncing, debounce logic |
+| 4 | Interfacing a 16×2 LCD | LCD initialization, text display, data and control signals |
+| 5 | Timer1-Based Periodic LED Task | Hardware timers, periodic execution, pushbutton input, I²C LCD |
+| 6 | PWM Signal Generation | Duty cycle, PWM, DC motor and buzzer control |
+| 7 | Period and Frequency Measurement | Signal timing, pulse measurement, frequency calculation |
+| 8 | UART Communication with Interrupt-Based Reception | Serial communication, transmit/receive, interrupts |
+| 9 | SPI-Based Graphical OLED Interface | SPI communication, bitmap images, graphical display |
+| 10 | ADC-Based Sensor Data Acquisition | Analog-to-digital conversion, sensor readings, digital filtering |
 
-### 1. LED Blinking Using Software Delay
+## 🛠️ Hardware and Software Requirements
 
-**Objective:**  
-To interface an LED with Arduino Uno and toggle it using the `delay()` function.
+### Hardware
+- Arduino-compatible development board
+- ESP32 development board
+- LED and current-limiting resistors
+- Pushbutton switches
+- 16×2 LCD module
+- I²C LCD module
+- SPI-based graphical OLED display
+- DC motor or buzzer for PWM experiments
+- Analog sensors or potentiometer
+- Breadboard and jumper wires
+- USB cable and suitable power supply
 
-**Concepts Used:**
-- Digital output
-- `pinMode()`
-- `digitalWrite()`
-- `delay()`
+*Note: The hardware required depends on the experiment. Not every component is needed for every practical.*
 
-**Expected Output:**  
-The LED turns ON and OFF at regular intervals.
+### Software
+- [Arduino IDE](https://www.arduino.cc/en/software)
+- [Arduino Language Reference](https://docs.arduino.cc/language-reference/)
+- [ESP32 Arduino Core](https://docs.espressif.com/projects/arduino-esp32/en/latest/)
+- Required libraries for the selected display and peripheral modules
 
----
+## 📂 Repository Structure
 
-### 2. LED Toggling Using `millis()`
+```text
+Arduino-ESP32-Embedded-Systems/
+│
+├── README.md
+│
+├── Experiment-01-Development-Setup/
+├── Experiment-02-LED-Timing/
+├── Experiment-03-Pushbutton-Debouncing/
+├── Experiment-04-LCD-Interface/
+├── Experiment-05-Timer1-Periodic-Task/
+├── Experiment-06-PWM-Control/
+├── Experiment-07-Period-Frequency-Measurement/
+├── Experiment-08-UART-Interrupt-Communication/
+├── Experiment-09-SPI-Graphical-OLED/
+└── Experiment-10-ADC-Sensor-Filtering/
+```
 
-**Objective:**  
-To toggle an LED using a non-blocking timing method based on `millis()`.
+Each experiment folder can contain the source code, circuit diagram, pin connections, working principle, and observed results.
 
-**Concepts Used:**
-- `millis()`
-- Non-blocking timing
-- Variables for time tracking
-- LED state toggling
+## 🚀 Getting Started
 
-**Expected Output:**  
-The LED continuously toggles without blocking the execution of other program tasks.
+1. Install the Arduino IDE.
+2. Configure the required board package for Arduino or ESP32.
+3. Connect the development board to your computer using USB.
+4. Select the correct board and communication port.
+5. Install any required libraries.
+6. Open the relevant experiment's `.ino` source file.
+7. Verify the code and upload it to the development board.
+8. Connect the required components according to the circuit diagram.
+9. Observe the output using the connected hardware, Serial Monitor, or display module.
 
----
+## ⚠️ Important Compatibility Notes
 
-### 3. Pushbutton and LED with Debouncing
+- **Arduino and ESP32 are different platforms:** pin assignments, timer implementations, ADC characteristics, and PWM APIs may differ.
+- **Timer1:** The Timer1-based experiment must use a timer implementation supported by the selected board. AVR-specific Timer1 registers and libraries are not directly portable to ESP32.
+- **PWM:** Configure PWM using the APIs supported by the selected board and core version.
+- **UART:** Select the appropriate hardware serial interface and baud rate.
+- **I²C and SPI:** Verify the display's communication interface, pin mapping, and library compatibility.
+- **ADC:** Sensor voltage must remain within the selected board's permitted input range. ESP32 GPIOs are not 5 V tolerant.
+- **Motor control:** Use a suitable motor driver and an appropriate external motor supply rather than powering a DC motor directly from a GPIO pin.
 
-**Objective:**  
-To interface a pushbutton switch and LED with Arduino Uno and control the LED using a delay-based debounce method.
+## 📚 Learning Outcomes
 
-**Concepts Used:**
-- Digital input
-- `INPUT_PULLUP`
-- Pushbutton interfacing
-- Switch bouncing
-- Debouncing
+After completing these experiments, learners should be able to:
 
-**Expected Output:**  
-Pressing the pushbutton turns the LED ON, while releasing it turns the LED OFF.
+- Write and upload embedded programs to Arduino and ESP32 boards.
+- Interface digital and analog peripherals.
+- Design responsive programs using non-blocking timing.
+- Understand timers, interrupts, and periodic task execution.
+- Generate PWM signals and control compatible actuators.
+- Implement UART and SPI communication.
+- Acquire, process, and display sensor data.
+- Troubleshoot basic hardware, software, and communication issues.
 
----
+## 👨‍💻 Contributions
 
-### 4. 16×2 I²C LCD Interfacing
+Contributions and suggestions are welcome. You can improve the repository by adding circuit diagrams, code comments, simulation results, hardware observations, or platform-specific implementations.
 
-**Objective:**  
-To interface a 16×2 LCD with an I²C backpack to Arduino Uno and display text using I²C communication.
+When contributing, ensure that the code is readable, tested on the stated platform, and accompanied by the necessary wiring details.
 
-**Displayed Message:**
+## 📄 License
 
-`Hello World`
-
-**Concepts Used:**
-- I²C communication
-- SDA and SCL
-- `Wire` library
-- `LiquidCrystal_I2C` library
-- LCD interfacing
-
-**Expected Output:**  
-The LCD displays **"Hello World"** on the first line.
-
----
-
-### 5. PWM Generation and Control
-
-**Objective:**  
-To generate PWM signals using Arduino Uno and study their application in LED brightness control, buzzer drive control, and DC motor speed control.
-
-**Concepts Used:**
-- PWM
-- Duty cycle
-- `analogWrite()`
-- LED brightness control
-- Buzzer control
-- DC motor speed control
-- L293D motor driver
-
-**Expected Output:**  
-The LED brightness and motor speed vary according to the PWM value.
-
----
-
-### 6. Measurement of Frequency and Time Period
-
-**Objective:**  
-To measure the time period and frequency of a square-wave signal generated by an external function generator using Arduino Uno.
-
-**Concepts Used:**
-- Square wave
-- Frequency
-- Time period
-- `pulseIn()`
-- Digital input
-- Serial Monitor
-
-**Expected Output:**  
-The Serial Monitor displays the measured **time period in microseconds** and **frequency in Hertz (Hz)**.
+This repository may be used for educational and learning purposes. Add a `LICENSE` file to specify the terms under which others may use, modify, and distribute the code.
 
 ---
 
-## 🔌 Arduino Uno PWM Pins
-
-The Arduino Uno supports PWM on:
-
-`3, 5, 6, 9, 10, 11`
-
-## 🔗 I²C Pins on Arduino Uno
-
-- **SDA → A4**
-- **SCL → A5**
-
-## 📡 ESP32
-
-The repository also includes basic ESP32 programs used to verify:
-
-- ESP32 board support in Arduino IDE
-- USB-to-Serial communication
-- COM port configuration
-- Program compilation and uploading
-- GPIO control
-
-## 📖 Important Concepts
-
-The practicals cover:
-
-- Digital Input and Output
-- GPIO
-- Software Delay
-- Non-blocking Timing
-- `millis()`
-- Pushbutton Debouncing
-- Internal Pull-Up Resistor
-- I²C Communication
-- LCD Interfacing
-- PWM
-- Duty Cycle
-- LED Brightness Control
-- Buzzer Control
-- DC Motor Control
-- Frequency Measurement
-- Time Period Measurement
-
-## 👨‍💻 Author
-
-**Paras Deshmane**
-
-Electrical Engineering Student
-
-Marathwada Mitra Mandal's College Of Engineering 
-
-This repository is created for educational and practical laboratory purposes.
+**Keywords:** Arduino, ESP32, Embedded Systems, Microcontrollers, GPIO, LCD, OLED, PWM, UART, SPI, ADC, Timers, Interrupts, Sensor Interfacing.
